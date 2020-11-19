@@ -1,0 +1,23 @@
+CREATE TABLE datos_uma (
+	id_uma SERIAL,
+	time varchar(30),
+	uma int8,
+	lat float8,
+	lon float8,
+	mp01 int8,
+	mp25 int8,
+	mp10 int8,
+	d03 int8,
+	d05 int8,
+	d01 int8,
+	d25 int8,
+	d50 int8,
+	d10 int8,
+	vel float8,
+	PRIMARY KEY (id_uma)
+);
+
+#######prueba##########
+
+INSERT INTO datos_uma (id_uma,time,lat,lon,uma,mp01,mp25,mp10,d03,d05,d01,d25,d50,d10,vel) VALUES(1,'11:15:56',1,-38.732689,-72.645523,1,1,2,375,97,9,2,2,0,0.1);
+#######################33
