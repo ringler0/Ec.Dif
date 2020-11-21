@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Template, Context
-from json import dumps
+import json
 from gestion.models import datos_uma
+
 
 def getAll(request):
     asd=datos_uma.objects.all()
-    #data = {"asf":"asf"}
-    #return HttpResponse(dumps(data), content_type='application/json')
-    return HttpResponse(asd)
+    data={"foo": "bar"}
+    return HttpResponse(asd.query, content_type="application/json")
 
 def getValue(request):
     latitud = request.GET.get('lat', '')

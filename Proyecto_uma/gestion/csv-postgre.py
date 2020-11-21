@@ -19,10 +19,10 @@ try:
         if row[0]=="time":
             pass
         else:
-            query = "INSERT INTO datos_uma (time,uma,lat,lon,mp01,mp25,mp10,d03,d05,d01,d25,d50,d10,vel) VALUES('"+row[0]+"',"+row[1]+","+row[2]+","+row[3]+","+row[4]+","+row[5]+","+row[6]+","+row[7]+","+row[8]+","+row[9]+","+row[10]+","+row[11]+","+row[12]+","+row[13]+");"
+            query = "INSERT INTO gestion_datos_uma (time,uma,lat,lon,mp01,mp25,mp10,d03,d05,d01,d25,d50,d10,vel) VALUES('"+row[0]+"',"+row[1]+","+row[2]+","+row[3]+","+row[4]+","+row[5]+","+row[6]+","+row[7]+","+row[8]+","+row[9]+","+row[10]+","+row[11]+","+row[12]+","+row[13]+");"
             cursor.execute(query)
             connection.commit()
-    cursor.execute("SELECT * FROM public.datos_uma;")
+    cursor.execute("SELECT * FROM gestion_datos_uma;")
     record = cursor.fetchall()
     for row in record:
         print("output: ", row,"\n")
