@@ -6,13 +6,12 @@ from os import listdir
 
 try:
     connection = psycopg2.connect(user = "postgres",
-                                  password = "",
+                                  password = "nico.2012",
                                   host = "127.0.0.1",
-                                  port = "5432",
-                                  database = "Tarea_Ec")
+                                  port = "56824",
+                                  database = "ProyectoUma")
 
     cursor = connection.cursor()
-    #print ( connection.get_dsn_parameters(),"\n")
     
     data=open('./uma_02.csv','r', encoding='utf-8')
     reader=csv.reader(data)
