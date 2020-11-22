@@ -18,4 +18,4 @@ class datos_uma(models.Model):
     vel = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return "[%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s]" %(self.id_uma,self.time,self.uma,self.lat,self.lon,self.mp01,self.mp25,self.mp10,self.d03,self.d05,self.d01,self.d25,self.d50,self.d10,self.vel)
+        return "{id_uma: %s,time: %s, uma: %s,lat: %s,lon: %s,mp01: %s,mp25: %s,mp10: %s,d03: %s,d05: %s,d01: %s,d25: %s,d50: %s,d10: %s,vel: %s}" %(self.id_uma,self.time,self.uma,self.lat,self.lon,self.mp01,self.mp25,self.mp10,self.d03,self.d05,self.d01,self.d25,self.d50,self.d10,self.vel)

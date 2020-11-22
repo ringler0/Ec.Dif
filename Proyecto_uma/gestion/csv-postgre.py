@@ -6,10 +6,10 @@ from os import listdir
 
 try:
     connection = psycopg2.connect(user = "postgres",
-                                  password = "nico.2012",
+                                  password = "esteban10",
                                   host = "127.0.0.1",
-                                  port = "56824",
-                                  database = "ProyectoUma")
+                                  port = "50455",
+                                  database = "uma")
 
     cursor = connection.cursor()
     

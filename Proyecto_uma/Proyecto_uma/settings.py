@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'Proyecto_uma.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ProyectoUma',
+        'NAME': 'uma',
         'USER': 'postgres',
-        'PASSWORD': '',
+        'PASSWORD': 'esteban10',
         'HOST':'127.0.0.1',
-        'DATABASE_PORT':'56824',
+        'DATABASE_PORT':'50455',
     }
 }
 
