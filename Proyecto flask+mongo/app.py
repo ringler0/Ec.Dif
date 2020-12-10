@@ -24,10 +24,11 @@ def get_all_data():
 
 @app.route('/GetValue')
 def get_one_data():
+  id_auto = request.args.get('id', default = 1.0, type = int)
   latitud = request.args.get('lat', default = 1.0, type = str)
   longitud = request.args.get('long', default = 1.0, type = str)
   autos = mongo.db.autos
-  s = autos.find_one({'lat' : str(latitud),'long':str(longitud)})
+  s = autos.find_one({'id' : id_auto,'lat' : str(latitud),'long':str(longitud)})
   if s:
     output = {'id' : s['id'],'lat' : s['lat'], 'long' : s['long'], 'vel' : s['vel'], 'ang' : s['ang'], 'fecha' : s['fecha'], 'ign' : s['ign'], 'sat' : s['sat']}
   else:
