@@ -5,27 +5,26 @@ from flask_pymongo import PyMongo
 
 app = Flask(__name__)
 
-app.config['MONGO_DBNAME'] = 'Contaminacion'
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/Contaminacion'
 
 mongo = PyMongo(app)
 
 @app.route('/GetAll', methods=['GET'])
 def get_all_data():
-  Data = mongo.db.Data
+  autos = mongo.db.autos
   output = []
-  for s in Data.find():
-    output.append({'time' : s['time'],'uma' : s['uma'], 'lat' : s['lat'], 'lon' : s['lon'], 'mp01' : s['mp01'], 'mp25' : s['mp25'], 'mp10' : s['mp10'], 'd03' : s['d03'], 'd05' : s['d05'], 'd01' : s['d01'], 'd25' : s['d25'], 'd50' : s['d50'], 'd10' : s['d10'], 'vel' : s['vel']})
+  for s in autos.find():
+    output.append({'id' : s['id'],'lat' : s['lat'], 'long' : s['long'], 'vel' : s['vel'], 'ang' : s['ang'], 'fecha' : s['fecha'], 'ign' : s['ign'], 'sat' : s['sat']})
   return jsonify({'result' : output})
 
 @app.route('/GetValue')
 def get_one_data():
   latitud = request.args.get('lat', default = 1.0, type = float)
   longitud = request.args.get('long', default = 1.0, type = float)
-  Data = mongo.db.Data
-  s = Data.find_one({'lat' : latitud,'lon':longitud})
+  autos = mongo.db.autos
+  s = autos.find_one({'lat' : latitud,'long':longitud})
   if s:
-    output = {'time' : s['time'],'uma' : s['uma'], 'lat' : s['lat'], 'lon' : s['lon'], 'mp01' : s['mp01'], 'mp25' : s['mp25'], 'mp10' : s['mp10'], 'd03' : s['d03'], 'd05' : s['d05'], 'd01' : s['d01'], 'd25' : s['d25'], 'd50' : s['d50'], 'd10' : s['d10'], 'vel' : s['vel']}
+    output = {'id' : s['id'],'lat' : s['lat'], 'long' : s['long'], 'vel' : s['vel'], 'ang' : s['ang'], 'fecha' : s['fecha'], 'ign' : s['ign'], 'sat' : s['sat']}
   else:
     output = "No se ha encontrado coincidencia"
   return jsonify({'result' : output})
