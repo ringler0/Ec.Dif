@@ -3,8 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Autos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </head>
 <body>
-    {{ num_posts }} posts
+    <div class="container">
+        <h1>Buscar por Latitud y Longitud</h1>
+        <form action="/mostrar" method="POST">
+            <div class="form-group row">
+                <label for="latitud" class="col-sm-2 col-form-label">Latitud</label>
+                <div class="col-sm-10">
+                    <input type="text" id="lat" name="lat" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="longitud" class="col-sm-2 col-form-label">Longitud</label>
+                <div class="col-sm-10">
+                    <input type="text" id="long" name="long" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-grou-row">
+                <div class="col-sm-10">
+                    <input type="submit" id="buscar" name="buscar" class="btn btn-success"/>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
