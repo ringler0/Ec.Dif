@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa</title>
+    <style>
+                  #map {
+                    height: 50%;
+                    width: 50%;
+                  }
+                  /* Optional: Makes the sample page fill the window. */
+                  html, body {
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                  }
+    </style>
 </head>
 <body>
     <h1>Resultado de la busqueda</h1>
@@ -17,5 +29,42 @@
         <li>ignicion: {{ignicion}}</li>
         <li>satelites: {{satelites}}</li>
     </ul>
+    <div id="map">
+        <script>
+
+                  function initMap() {
+                    var uluru = {lat: {{latitud}}, lng: {{longitud}}};
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 17,
+                      center: uluru
+                    });
+
+                    var contentString = '<div id="content">'+
+                        '<div id="siteNotice">'+
+                        '</div>'+
+                        '<h1 id="firstHeading" class="firstHeading">Compras del cliente asdasdasdasasdas</h1>'+
+                        '<div id="bodyContent">'+
+                        '<p>asdasdadsasdasd</p>'+
+                        '</div>'+
+                        '</div>';
+
+                    var infowindow = new google.maps.InfoWindow({
+                      content: contentString
+                    });
+
+                    var marker = new google.maps.Marker({
+                      position: uluru,
+                      map: map,
+                      title: 'Compras'
+                    });
+                    marker.addListener('click', function() {
+                      infowindow.open(map, marker);
+                    });
+                  }
+                </script>
+                <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBncmJUSWAgtT_r2vCO-wtcDMYBTwhSq8&callback=initMap">
+        </script>
+        </div>
 </body>
 </html>
