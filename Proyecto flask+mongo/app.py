@@ -8,6 +8,7 @@ app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/Contaminacion'
 mongo = PyMongo(app)
 
+API_KEY="AIzaSyAoPe9_VZO_2EmfopISDb3PKMqqAwmk1mM"
 posts = []
 
 @app.route("/")
