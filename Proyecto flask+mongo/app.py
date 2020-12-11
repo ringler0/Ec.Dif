@@ -11,30 +11,38 @@ mongo = PyMongo(app)
 API_KEY="AIzaSyAoPe9_VZO_2EmfopISDb3PKMqqAwmk1mM"
 posts = []
 
-@app.route("/")
-def index():
-    return render_template("index.html", num_posts=len(posts))
 
-@app.route('/GetAll', methods=['GET'])
-def get_all_data():
+def busca(latitud,longitud):
   autos = mongo.db.autos
-  output = []
-  for s in autos.find():
-    output.append({'id' : s['id'],'lat' : s['lat'], 'long' : s['long'], 'vel' : s['vel'], 'ang' : s['ang'], 'fecha' : s['fecha'], 'ign' : s['ign'], 'sat' : s['sat']})
-  return jsonify({'result' : output})
-
-@app.route('/GetValue')
-def get_one_data():
-  id_auto = request.args.get('id', default = 1.0, type = int)
-  latitud = request.args.get('lat', default = 1.0, type = str)
-  longitud = request.args.get('long', default = 1.0, type = str)
-  autos = mongo.db.autos
-  s = autos.find_one({'id' : id_auto,'lat' : str(latitud),'long':str(longitud)})
+  s = autos.find_one({'lat' : str(latitud),'long':str(longitud)})
   if s:
     output = {'id' : s['id'],'lat' : s['lat'], 'long' : s['long'], 'vel' : s['vel'], 'ang' : s['ang'], 'fecha' : s['fecha'], 'ign' : s['ign'], 'sat' : s['sat']}
   else:
     output = "No se ha encontrado coincidencia"
-  return jsonify({'result' : output})
+  return output
+  #return jsonify({'result' : output})
+
+
+@app.route("/")
+def index():
+    return render_template("index.html", num_posts=len(posts))
+
+@app.route("/mostrar", methods=["POST"])
+def mapa():
+    req = request.form
+    #id_auto = req['id']
+    latitud = str(req['lat'])
+    longitud = str(req['long'])
+    resultado = busca(latitud,longitud)
+    return render_template("mapa.html",id_auto=resultado["id"],latitud=resultado["lat"],longitud=resultado["long"],velocidad=resultado["vel"],angulo=resultado["ang"],fecha=resultado["fecha"],ignicion=resultado["ign"],satelites=resultado["sat"])
+
+#@app.route('/GetAll', methods=['GET'])
+#def get_all_data():
+#  autos = mongo.db.autos
+#  output = []
+#  for s in autos.find():
+#    output.append({'id' : s['id'],'lat' : s['lat'], 'long' : s['long'], 'vel' : s['vel'], 'ang' : s['ang'], 'fecha' : s['fecha'], 'ign' : s['ign'], 'sat' : s['sat']})
+#  return jsonify({'result' : output})
 
 if __name__ == '__main__':
     app.run(debug=True)
