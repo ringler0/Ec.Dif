@@ -14,7 +14,10 @@ posts = []
 
 def busca(id_auto,latitud,longitud):
   autos = mongo.db.autos
-  s = autos.find_one({'id':int(id_auto), 'lat' : str(latitud),'long':str(longitud)})
+  if id_auto!="" or latitud!="" or longitud!="":
+    s = autos.find_one({'id':int(id_auto), 'lat' : str(latitud),'long':str(longitud)})
+  else:
+    s=0
   if s:
     output = {'id' : s['id'],'lat' : s['lat'], 'long' : s['long'], 'vel' : s['vel'], 'ang' : s['ang'], 'fecha' : s['fecha'], 'ign' : s['ign'], 'sat' : s['sat']}
     b=1

@@ -5,9 +5,20 @@
     <title>Autos</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <style>
+        .titulo{
+            margin-top: 5%;
+        }
+        .container{
+            margin-top: 2%;
+        }
+        .boton{
+            margin-left: 7%;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <div class="titulo">
         <h1 class="text-center">Buscar por Latitud y Longitud</h1>
     </div>
     <div class="container ">
@@ -30,8 +41,8 @@
                     <input type="number" id="long" name="long"  step="0.00000000000000001" class="form-control"/>
                 </div>
             </div>
-            <div class="form-grou-row ">
-                <div class="col-sm-10 row justify.content-center">
+            <div class="form-grou-row">
+                <div class="col-sm-10 row justify.content-center boton">
                     <input type="submit" id="buscar" name="buscar" class="btn btn-info btn-lg btn-block"/>
                 </div>
             </div>
